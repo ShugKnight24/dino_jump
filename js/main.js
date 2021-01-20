@@ -92,3 +92,20 @@ function resetScore(){
 function saveHighScore(){
 	localStorage.setItem(LOCAL_STORAGE_SCORE_KEY, highScore);
 }
+
+// Handle Settings Menu
+const openSettingsButton = document.getElementsByClassName('open-settings')[0],
+	closeSettingsButton = document.getElementsByClassName('close-settings')[0],
+	settings = document.getElementsByClassName('settings-container')[0];
+
+openSettingsButton.addEventListener('click', openSettings);
+closeSettingsButton.addEventListener('click', closeSettings);
+
+function openSettings() {
+	settings.classList.add('open');
+}
+
+function closeSettings() {
+	settings.classList.remove('open');
+}
+

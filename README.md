@@ -11,7 +11,7 @@ Clone of the Google Dino game
   - Update sprite on death
   - Improve score
   - Add high score
-- Add Settings ...
+- Add Settings ... (in progress)
   - Turn on / off different sprite sets
     - Mario sprites
     - Sonic sprites

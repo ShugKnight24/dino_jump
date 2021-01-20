@@ -6,6 +6,78 @@
 
 .app-container {
 	text-align: center;
+.settings-container {
+	position: relative;
+	text-align: right;
+	margin-right: 50px;
+	margin-top: 25px;
+	font-size: 24px;
+	right: 0;
+}
+
+.settings-container.open {
+	margin-top: 0;
+}
+
+.open-settings {
+	font-size: 36px;
+	display: inline-block;
+	color: #28a745;
+}
+
+.open-settings i {
+	-webkit-transition: 0.7s transform, 0.7s -webkit-transform;
+	transition: 0.7s transform, 0.7s -webkit-transform;
+}
+
+.open-settings:hover {
+	cursor: pointer;
+	color: #218838;
+}
+
+.open-settings:hover i {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.close-settings {
+	color: #C60F13;
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	font-size: 36px;
+}
+
+.close-settings:hover {
+	color: #A30D10;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.settings {
+	display: none;
+	font-size: 24px;
+	position: absolute;
+	width: 33%;
+	padding-right: 25px;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	height: 100vh;
+	background-color: #2F5313;
+	padding-top: 30px;
+	color: white;
+}
+
+.settings-container.open .settings {
+	display: block;
+}
+
+.settings h3 {
+	margin-top: 50px;
+	padding-bottom: 25px;
 }
 
 .game-container {
