@@ -11,7 +11,8 @@ const dino = document.getElementsByClassName('dino')[0],
 let jumping = false,
 	score = 0,
 	highScore = localStorage.getItem(LOCAL_STORAGE_SCORE_KEY) || 0,
-	gameOver = false;
+	gameOver = true,
+	gameStarted = false;
 
 document.addEventListener('DOMContentLoaded', function(){
 	loadHighScore();
@@ -25,8 +26,6 @@ function cactusMove(){
 	cactus.classList.add('cactus-move');
 }
 
-cactusMove();
-
 function dinoControl(event){
 	// Space Bar & Up arrow
 	if (event.keyCode === 32 || event.keyCode === 38){
@@ -35,6 +34,12 @@ function dinoControl(event){
 }
 
 function dinoJump(){
+	if (gameOver){
+		startGame();
+	}
+	if (!gameStarted){
+		startGame();
+	}
 	if (!jumping){
 		jumping = true;
 		dino.classList.add('dino-jump');
@@ -75,10 +80,11 @@ function checkGameState(){
 
 let gameStateTimer = setInterval(checkGameState, 10);
 
-restartButton.addEventListener('click', restartGame);
+restartButton.addEventListener('click', startGame);
 
-function restartGame(){
+function startGame(){
 	gameOver = false;
+	gameStarted = true;
 	resetScore();
 	dino.classList.remove('dead');
 	gameOverText.classList.add('hidden');
