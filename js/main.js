@@ -49,7 +49,8 @@ document.addEventListener('keydown', dinoControl);
 
 function checkGameState(){
 	let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom')),
-		cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue('left'));
+		cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue('left')),
+		adjustedScore = Math.floor(score / 10);
 
 	if (gameOver) {
 		return false;
@@ -60,14 +61,14 @@ function checkGameState(){
 		clearInterval(gameStateTimer);
 		gameOverText.classList.remove('hidden');
 
-		if (highScore < Math.floor(score / 10)){
-			highScore = Math.floor(score / 10);
+		if (highScore < adjustedScore){
+			highScore = adjustedScore;
 			saveHighScore();
 			loadHighScore();
 		}
 	} else {
 		score++;
-		scoreContainer.innerHTML = Math.floor(score / 10);
+		scoreContainer.innerHTML = adjustedScore;
 	}
 }
 
