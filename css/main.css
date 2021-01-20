@@ -16,9 +16,36 @@
 	position: relative;
 }
 
+.score-container {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.high-score-container {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	color: #218838;
+}
+
+.current-score-container {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	color: #535353;
+}
+
 .game-over {
-	position: relative;
-	top: 50px;
+	display: block;
+	margin: 50px auto 0;
+}
+
+.game-over h2 {
+	margin: 0 auto;
+	width: 385px;
+	height: 30px;
+	background: url(/img/dino_sprites.png);
+	background-position: -1295px -30px;
 }
 
 .game-over.hidden {
