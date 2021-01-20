@@ -24,5 +24,4 @@ Clone of the Google Dino game
   - Clouds
   - Pterodactyls
   - Floor
-- Save high score to local storage
 - Improve collision system
