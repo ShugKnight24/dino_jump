@@ -17,8 +17,16 @@
 }
 
 .game-over {
-	position: relative;
-	top: 50px;
+	display: block;
+	margin: 50px auto 0;
+}
+
+.game-over h2 {
+	margin: 0 auto;
+	width: 385px;
+	height: 30px;
+	background: url(/img/dino_sprites.png);
+	background-position: -1295px -30px;
 }
 
 .game-over.hidden {
