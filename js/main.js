@@ -11,7 +11,8 @@ const dino = document.getElementsByClassName('dino')[0],
 let jumping = false,
 	score = 0,
 	highScore = localStorage.getItem(LOCAL_STORAGE_SCORE_KEY) || 0,
-	gameOver = false;
+	gameOver = true,
+	gameStarted = false;
 
 document.addEventListener('DOMContentLoaded', function(){
 	loadHighScore();
@@ -25,8 +26,6 @@ function cactusMove(){
 	cactus.classList.add('cactus-move');
 }
 
-cactusMove();
-
 function dinoControl(event){
 	// Space Bar & Up arrow
 	if (event.keyCode === 32 || event.keyCode === 38){
@@ -35,6 +34,12 @@ function dinoControl(event){
 }
 
 function dinoJump(){
+	if (gameOver){
+		startGame();
+	}
+	if (!gameStarted){
+		startGame();
+	}
 	if (!jumping){
 		jumping = true;
 		dino.classList.add('dino-jump');
@@ -49,35 +54,39 @@ document.addEventListener('keydown', dinoControl);
 
 function checkGameState(){
 	let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom')),
-		cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue('left'));
+		cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue('left')),
+		adjustedScore = Math.floor(score / 10);
 
 	if (gameOver) {
 		return false;
 	} else if (cactusLeft <= 115 && cactusLeft >= -50 && dinoBottom <= 70){
 		gameOver = true;
+		dino.classList.add('dead');
 		cactus.classList.remove('cactus-move');
 		cactus.classList.add('hidden');
 		clearInterval(gameStateTimer);
 		gameOverText.classList.remove('hidden');
 
-		if (highScore < Math.floor(score / 10)){
-			highScore = Math.floor(score / 10);
+		if (highScore < adjustedScore){
+			highScore = adjustedScore;
 			saveHighScore();
 			loadHighScore();
 		}
 	} else {
 		score++;
-		scoreContainer.innerHTML = Math.floor(score / 10);
+		scoreContainer.innerHTML = adjustedScore;
 	}
 }
 
 let gameStateTimer = setInterval(checkGameState, 10);
 
-restartButton.addEventListener('click', restartGame);
+restartButton.addEventListener('click', startGame);
 
-function restartGame(){
+function startGame(){
 	gameOver = false;
+	gameStarted = true;
 	resetScore();
+	dino.classList.remove('dead');
 	gameOverText.classList.add('hidden');
 	cactus.classList.remove('hidden');
 	cactusMove();
@@ -92,3 +101,20 @@ function resetScore(){
 function saveHighScore(){
 	localStorage.setItem(LOCAL_STORAGE_SCORE_KEY, highScore);
 }
+
+// Handle Settings Menu
+const openSettingsButton = document.getElementsByClassName('open-settings')[0],
+	closeSettingsButton = document.getElementsByClassName('close-settings')[0],
+	settings = document.getElementsByClassName('settings-container')[0];
+
+openSettingsButton.addEventListener('click', openSettings);
+closeSettingsButton.addEventListener('click', closeSettings);
+
+function openSettings() {
+	settings.classList.add('open');
+}
+
+function closeSettings() {
+	settings.classList.remove('open');
+}
+

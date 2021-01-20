@@ -8,10 +8,8 @@ Clone of the Google Dino game
   - Add directions
   - Figure out proper walking animation
   - Add Sounds
-  - Update sprite on death
   - Improve score
-  - Add high score
-- Add Settings ...
+- Add Settings ... (in progress)
   - Turn on / off different sprite sets
     - Mario sprites
     - Sonic sprites
@@ -25,3 +23,4 @@ Clone of the Google Dino game
   - Pterodactyls
   - Floor
 - Improve collision system
+- Make gravity more realistic
