@@ -56,6 +56,7 @@ function checkGameState(){
 		return false;
 	} else if (cactusLeft <= 115 && cactusLeft >= -50 && dinoBottom <= 70){
 		gameOver = true;
+		dino.classList.add('dead');
 		cactus.classList.remove('cactus-move');
 		cactus.classList.add('hidden');
 		clearInterval(gameStateTimer);
@@ -79,6 +80,7 @@ restartButton.addEventListener('click', restartGame);
 function restartGame(){
 	gameOver = false;
 	resetScore();
+	dino.classList.remove('dead');
 	gameOverText.classList.add('hidden');
 	cactus.classList.remove('hidden');
 	cactusMove();

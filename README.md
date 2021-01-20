@@ -8,7 +8,6 @@ Clone of the Google Dino game
   - Add directions
   - Figure out proper walking animation
   - Add Sounds
-  - Update sprite on death
   - Improve score
   - Add high score
 - Add Settings ... (in progress)

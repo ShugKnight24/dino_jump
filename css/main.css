@@ -156,6 +156,10 @@
 	background-position: -1852px 0px;
 }
 
+.dino.dead {
+	background-position: -2027px 0px;
+}
+
 .dino-jump {
 	animation: dinoJump 1s;
 	-o-animation: dinoJump 1s;
