@@ -44,7 +44,7 @@
 	margin: 0 auto;
 	width: 385px;
 	height: 30px;
-	background: url(/img/dino_sprites.png);
+	background: url(../img/dino_sprites.png);
 	background-position: -1295px -30px;
 }
 
@@ -57,7 +57,7 @@
 	margin: 0 auto;
 	width: 75px;
 	height: 65px;
-	background: url(/img/dino_sprites.png);
+	background: url(../img/dino_sprites.png);
 	background-position: 0px 0px;
 }
 
@@ -71,7 +71,7 @@
 	position: absolute;
 	bottom: 0;
 	left: 20px;
-	background: url(/img/dino_sprites.png);
+	background: url(../img/dino_sprites.png);
 	background-position: -1852px 0px;
 }
 
@@ -80,7 +80,7 @@
 	-o-animation: dinoJump 1s;
 	-moz-animation: dinoJump 1s;
 	animation: dinoJump 1s;
-	background: url(/img/dino_sprites.png);
+	background: url(../img/dino_sprites.png);
 	background-position: -1675px 0px;
 }
 
@@ -90,7 +90,7 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	background: url(/img/dino_sprites.png);
+	background: url(../img/dino_sprites.png);
 	background-position: -440px 0px;
 }
 
