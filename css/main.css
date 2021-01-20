@@ -13,6 +13,7 @@
 
 .app-container h1 {
 	color: #218838;
+	margin-bottom: 25px;
 }
 
 .settings-container {
@@ -118,7 +119,6 @@
 
 .game-over {
 	display: block;
-	margin: 50px auto 0;
 }
 
 .game-over h2 {
