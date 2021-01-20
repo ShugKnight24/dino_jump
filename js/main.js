@@ -3,12 +3,23 @@
 const dino = document.getElementsByClassName('dino')[0],
 	cactus = document.getElementsByClassName('cactus')[0],
 	scoreContainer = document.getElementsByClassName('score')[0],
+	highScoreContainer = document.getElementsByClassName('high-score')[0],
 	gameOverText = document.getElementsByClassName('game-over')[0],
-	restartButton = document.getElementsByClassName('restart-button')[0];
+	restartButton = document.getElementsByClassName('restart-button')[0],
+	LOCAL_STORAGE_SCORE_KEY = 'dino.score';
 
 let jumping = false,
 	score = 0,
+	highScore = localStorage.getItem(LOCAL_STORAGE_SCORE_KEY) || 0,
 	gameOver = false;
+
+document.addEventListener('DOMContentLoaded', function(){
+	loadHighScore();
+});
+
+function loadHighScore(){
+	highScoreContainer.innerHTML = highScore;
+}
 
 function cactusMove(){
 	cactus.classList.add('cactus-move');
@@ -48,6 +59,12 @@ function checkGameState(){
 		cactus.classList.add('hidden');
 		clearInterval(gameStateTimer);
 		gameOverText.classList.remove('hidden');
+
+		if (highScore < Math.floor(score / 10)){
+			highScore = Math.floor(score / 10);
+			saveHighScore();
+			loadHighScore();
+		}
 	} else {
 		score++;
 		scoreContainer.innerHTML = Math.floor(score / 10);
@@ -70,4 +87,8 @@ function restartGame(){
 function resetScore(){
 	scoreContainer.innerHTML = 0;
 	score = 0;
+}
+
+function saveHighScore(){
+	localStorage.setItem(LOCAL_STORAGE_SCORE_KEY, highScore);
 }
