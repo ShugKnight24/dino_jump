@@ -104,14 +104,14 @@
 
 .high-score-container {
 	position: absolute;
-	top: 25px;
+	top: -3px;
 	left: 25px;
 	color: #218838;
 }
 
 .current-score-container {
 	position: absolute;
-	top: 25px;
+	top: -3px;
 	right: 25px;
 	color: #535353;
 }
