@@ -2,11 +2,15 @@
 
 const dino = document.getElementsByClassName('dino')[0],
 	cactus = document.getElementsByClassName('cactus')[0],
+	currentScoreContainer = document.getElementsByClassName('current-score-container')[0],
 	scoreContainer = document.getElementsByClassName('score')[0],
 	highScoreContainer = document.getElementsByClassName('high-score')[0],
 	gameOverText = document.getElementsByClassName('game-over')[0],
 	restartButton = document.getElementsByClassName('restart-button')[0],
-	LOCAL_STORAGE_SCORE_KEY = 'dino.score';
+	LOCAL_STORAGE_SCORE_KEY = 'dino.score',
+	hitAudio = document.getElementById('hit-audio'),
+	jumpAudio = document.getElementById('jump-audio'),
+	milestoneAudio = document.getElementById('milestone-audio');
 
 let jumping = false,
 	score = 0,
@@ -43,6 +47,7 @@ function dinoJump(){
 	if (!jumping){
 		jumping = true;
 		dino.classList.add('dino-jump');
+		jumpAudio.play();
 	}
 	setTimeout(function(){
 		dino.classList.remove('dino-jump');
@@ -62,6 +67,7 @@ function checkGameState(){
 	} else if (cactusLeft <= 115 && cactusLeft >= -50 && dinoBottom <= 70){
 		gameOver = true;
 		dino.classList.add('dead');
+		hitAudio.play();
 		cactus.classList.remove('cactus-move');
 		cactus.classList.add('hidden');
 		clearInterval(gameStateTimer);
@@ -75,6 +81,14 @@ function checkGameState(){
 	} else {
 		score++;
 		scoreContainer.innerHTML = adjustedScore;
+
+		if (adjustedScore !== 0 && adjustedScore % 100 === 0){
+			milestoneAudio.play();
+			currentScoreContainer.classList.add('exclamation', 'grow');
+			setTimeout(function(){
+				currentScoreContainer.classList.remove('exclamation', 'grow');
+			}, 750);
+		}
 	}
 }
 
