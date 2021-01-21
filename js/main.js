@@ -2,6 +2,7 @@
 
 const dino = document.getElementsByClassName('dino')[0],
 	cactus = document.getElementsByClassName('cactus')[0],
+	currentScoreContainer = document.getElementsByClassName('current-score-container')[0],
 	scoreContainer = document.getElementsByClassName('score')[0],
 	highScoreContainer = document.getElementsByClassName('high-score')[0],
 	gameOverText = document.getElementsByClassName('game-over')[0],
@@ -83,6 +84,10 @@ function checkGameState(){
 
 		if (adjustedScore !== 0 && adjustedScore % 100 === 0){
 			milestoneAudio.play();
+			currentScoreContainer.classList.add('exclamation', 'grow');
+			setTimeout(function(){
+				currentScoreContainer.classList.remove('exclamation', 'grow');
+			}, 750);
 		}
 	}
 }

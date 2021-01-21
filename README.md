@@ -7,7 +7,6 @@ Clone of the Google Dino game
   - Update UI
   - Add directions
   - Figure out proper walking animation
-  - Improve score
 - Add Settings ... (in progress)
   - Turn on / off different sprite sets
     - Mario sprites
