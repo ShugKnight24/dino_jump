@@ -1,17 +1,22 @@
 'use strict';
 
-const dino = document.getElementsByClassName('dino')[0],
-	cactus = document.getElementsByClassName('cactus')[0],
-	currentScoreContainer = document.getElementsByClassName('current-score-container')[0],
-	scoreContainer = document.getElementsByClassName('score')[0],
-	highScoreContainer = document.getElementsByClassName('high-score')[0],
-	gameOverText = document.getElementsByClassName('game-over')[0],
-	restartButton = document.getElementsByClassName('restart-button')[0],
-	LOCAL_STORAGE_SCORE_KEY = 'dino.score',
-	hitAudio = document.getElementById('hit-audio'),
-	jumpAudio = document.getElementById('jump-audio'),
-	milestoneAudio = document.getElementById('milestone-audio');
+// classes
+const dino = document.querySelector('.dino'),
+	cactus = document.querySelector('.cactus'),
+	currentScoreContainer = document.querySelector('.current-score-container'),
+	scoreContainer = document.querySelector('.score'),
+	highScoreContainer = document.querySelector('.high-score'),
+	gameOverText = document.querySelector('.game-over'),
+	restartButton = document.querySelector('.restart-button');
 
+// ids
+const hitAudio = document.querySelector('#hit-audio'),
+	jumpAudio = document.querySelector('#jump-audio'),
+	milestoneAudio = document.querySelector('#milestone-audio');
+
+// constants
+const LOCAL_STORAGE_SCORE_KEY = 'dino.score';
+	
 let jumping = false,
 	score = 0,
 	highScore = localStorage.getItem(LOCAL_STORAGE_SCORE_KEY) || 0,
@@ -117,9 +122,9 @@ function saveHighScore(){
 }
 
 // Handle Settings Menu
-const openSettingsButton = document.getElementsByClassName('open-settings')[0],
-	closeSettingsButton = document.getElementsByClassName('close-settings')[0],
-	settings = document.getElementsByClassName('settings-container')[0];
+const openSettingsButton = document.querySelector('.open-settings'),
+	closeSettingsButton = document.querySelector('.close-settings'),
+	settings = document.querySelector('.settings-container');
 
 openSettingsButton.addEventListener('click', openSettings);
 closeSettingsButton.addEventListener('click', closeSettings);
