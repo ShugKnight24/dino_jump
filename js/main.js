@@ -37,7 +37,7 @@ function cactusMove(){
 
 function dinoControl(event){
 	// Space Bar & Up arrow
-	if (event.keyCode === 32 || event.keyCode === 38){
+	if (event.key === ' ' || event.key === 'ArrowUp'){
 		dinoJump();
 	}
 }
