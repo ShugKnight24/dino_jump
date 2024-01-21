@@ -48,10 +48,7 @@ function dinoControl(event){
 }
 
 function dinoJump(){
-	if (gameOver){
-		startGame();
-	}
-	if (!gameStarted){
+	if (gameOver || !gameStarted){
 		startGame();
 	}
 	if (!jumping){
