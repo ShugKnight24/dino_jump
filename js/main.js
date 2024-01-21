@@ -40,6 +40,11 @@ function dinoControl(event){
 	if (event.key === ' ' || event.key === 'ArrowUp'){
 		dinoJump();
 	}
+
+	// Down arrow
+	if (event.key === 'ArrowDown'){
+		animateDinoCrouch(event);
+	}
 }
 
 function dinoJump(){
@@ -64,12 +69,33 @@ let isWalkingRight = true;
 let walkInterval;
 
 function animateDinoWalk() {
-    if (isWalkingRight) {
-        dino.classList.remove('walk-right');
-    } else {
-        dino.classList.add('walk-right');
-    }
-    isWalkingRight = !isWalkingRight;
+	if (isWalkingRight) {
+		dino.classList.remove('walk-right');
+	} else {
+		dino.classList.add('walk-right');
+	}
+	isWalkingRight = !isWalkingRight;
+}
+
+let isCrouching = false;
+
+// TODO: animation is a little janky, need to fix this classes and the width of the dino
+function animateDinoCrouch(){
+	if (!isCrouching){
+		clearInterval(walkInterval);
+		dino.classList.remove('walk-right');
+		isCrouching = true;
+		dino.classList.add('crouch-start');
+		setTimeout(function(){
+			dino.classList.add('crouch-end');
+			dino.classList.remove('crouch-start');
+		}, 500);
+		setTimeout(function(){
+			dino.classList.remove('crouch-end');
+			isCrouching = false;
+		}, 1000);
+	}
+	walkInterval = setInterval(animateDinoWalk, 250);
 }
 
 document.addEventListener('keydown', dinoControl);
@@ -152,4 +178,3 @@ function openSettings() {
 function closeSettings() {
 	settings.classList.remove('open');
 }
-
