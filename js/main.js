@@ -60,7 +60,33 @@ function dinoJump(){
 	}, 750); // time  here equals the animation time
 }
 
+let isWalkingRight = true;
+let walkInterval;
+
+function animateDinoWalk() {
+    if (isWalkingRight) {
+        dino.classList.remove('walk-right');
+    } else {
+        dino.classList.add('walk-right');
+    }
+    isWalkingRight = !isWalkingRight;
+}
+
 document.addEventListener('keydown', dinoControl);
+
+restartButton.addEventListener('click', startGame);
+
+function startGame(){
+	gameOver = false;
+	gameStarted = true;
+	resetScore();
+	dino.classList.remove('dead');
+	gameOverText.classList.add('hidden');
+	cactus.classList.remove('hidden');
+	cactusMove();
+	gameStateTimer = setInterval(checkGameState, 10);
+	walkInterval = setInterval(animateDinoWalk, 250);
+}
 
 function checkGameState(){
 	let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom')),
@@ -68,9 +94,12 @@ function checkGameState(){
 		adjustedScore = Math.floor(score / 10);
 
 	if (gameOver) {
+		clearInterval(walkInterval);
 		return false;
 	} else if (cactusLeft <= 115 && cactusLeft >= -50 && dinoBottom <= 70){
 		gameOver = true;
+		dino.classList.remove('dino-jump');
+		dino.classList.remove('walk-right');
 		dino.classList.add('dead');
 		hitAudio.play();
 		cactus.classList.remove('cactus-move');
@@ -98,19 +127,6 @@ function checkGameState(){
 }
 
 let gameStateTimer = setInterval(checkGameState, 10);
-
-restartButton.addEventListener('click', startGame);
-
-function startGame(){
-	gameOver = false;
-	gameStarted = true;
-	resetScore();
-	dino.classList.remove('dead');
-	gameOverText.classList.add('hidden');
-	cactus.classList.remove('hidden');
-	cactusMove();
-	gameStateTimer = setInterval(checkGameState, 10);
-}
 
 function resetScore(){
 	scoreContainer.innerHTML = 0;

@@ -166,6 +166,11 @@
 	background-position: -1852px 0px;
 }
 
+.dino.walk-right {
+	background: url(../img/dino_sprites.png);
+	background-position: -1940px 0px;
+}
+
 .dino.dead {
 	background-position: -2027px 0px;
 }
